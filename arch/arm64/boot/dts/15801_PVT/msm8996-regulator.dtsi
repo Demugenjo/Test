@@ -280,7 +280,7 @@
 			
 			status = "okay";
 		};
-/*
+
 		pm8994_l18_pin_ctrl: regulator-l18-pin-ctrl {
 			compatible = "qcom,rpm-smd-regulator";
 			regulator-name = "pm8994_l18_pin_ctrl";
@@ -288,10 +288,12 @@
 			regulator-min-microvolt = <2700000>;
 			regulator-max-microvolt = <2900000>;
 			qcom,init-voltage = <2700000>;
-	
+			/*
+			 * LDO 18 output is enabled when PM8994 GPIO 11 (HW_EN2)
+			 * is driven high.
+			 */
 			qcom,enable-with-pin-ctrl = <0 4>;
 		};
-	*/
 	};
 
 	rpm-regulator-ldoa19 {
@@ -1702,8 +1704,8 @@
 
 				qcom,corner-frequencies =
 					<0 133000000 214000000 315000000
-					 401800000 510000000 560000000
-					 624000000>;
+					 401800000 510000000 652800000
+					 729600000>;
 
 				qcom,cpr-target-quotients =
 				      <   0    0    0    0    0    0    0    0
